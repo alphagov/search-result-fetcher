@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/search_result_fetcher'
+
+if ARGV.length < 1
+  $stderr.puts "Usage: #{$0} [input_file] output_file"
+  exit 1
+end
+
+outfile = ARGV.pop
+puts ARGV
+queries = ARGF.map(&:strip)
+
+File.open(outfile, 'wb') do |fd|
+  SearchResultFetcher.new(queries).fetch(fd)
+end
