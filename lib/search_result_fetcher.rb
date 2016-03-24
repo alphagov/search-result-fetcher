@@ -22,18 +22,24 @@ class SearchResultFetcher
       )
       results = response["results"]
 
-      if first
-        csv << ['query', 'position'] + results.first.keys
-        first = false
-      end
-
       results.each_with_index do |result, i|
+        result.reject! {|key| rejected_keys.include?(key)}
+
+        if first
+          csv << ['query', 'position'] + result.keys
+          first = false
+        end
+
         csv << [q, i + 1] + present(result.values)
       end
     end
   end
 
 private
+
+  def rejected_keys
+    ["es_score", "index"]
+  end
 
   def present(values)
     values.map(&method(:present_value))
