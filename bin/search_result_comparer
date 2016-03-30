@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/search_result_comparer'
+
+if ARGV.length != 2
+  $stderr.puts "Usage: #{$0} before.csv after.csv"
+  exit 1
+end
+
+SearchResultComparer.new.compare(*ARGV)
