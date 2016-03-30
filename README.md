@@ -43,12 +43,12 @@ git clone git@github.com:alphagov/search-result-fetcher.git
 cd search-result-fetcher
 
 # Fetch the results before
-bundle exec bin/search-result-fetcher search_queries before.csv
+bundle exec ./bin/search_result_fetcher search_queries before.csv
 
 # Deploy the update
 
 # Fetch the results after
-bundle exec bin/search-result-fetcher search_queries after.csv
+bundle exec ./bin/search_result_fetcher search_queries after.csv
 
 # Compare
 diff before.csv after.csv
