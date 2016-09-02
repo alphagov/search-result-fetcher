@@ -17,7 +17,7 @@ class SearchResultFetcher
 
       response = JSON(
         RestClient.get(
-          @rummager_url + '/unified_search.json', {:params => {q: q, count: 100}}
+          @rummager_url + '/search.json', {:params => {q: q, count: 100}}
         )
       )
       results = response["results"]
